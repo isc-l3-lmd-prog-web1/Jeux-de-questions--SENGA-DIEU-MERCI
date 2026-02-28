@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WordPlay - Jeu</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Verdana, sans-serif;
+    background:#f4f4f4;
+}
+
+header{
+    background:#4a00e0;
+    color:white;
+    padding:15px;
+    text-align:center;
+}
+
+nav a{
+    color:white;
+    margin:0 10px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.container{
+    max-width:600px;
+    margin:auto;
+    padding:25px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:8px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+    text-align:center;
+}
+
+input{
+    width:90%;
+    padding:10px;
+    margin:10px 0;
+}
+
+.btn{
+    background:#4a00e0;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.btn:hover{
+    background:#3200a8;
+}
+
+@media(max-width:600px){
+    nav a{
+        display:block;
+        margin:5px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🎯 Jeu de Mots</h1>
+
+<nav>
+<a href="index.html">Accueil</a>
+<a href="jeu.html">Jouer</a>
+<a href="devinettes.html">Devinettes</a>
+<a href="score.html">Scores</a>
+<a href="about.html">À propos</a>
+</nav>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Devine le mot</h2>
+
+<p id="indice"></p>
+
+<input type="text" id="rep" placeholder="Ta réponse">
+
+<button class="btn" onclick="verifier()">Valider</button>
+
+<p id="msg"></p>
+
+<p>Score : <span id="score">0</span></p>
+
+</div>
+
+</div>
+
+<script>
+const mots=[
+{indice:"Je suis rond et on me mange au petit-déjeuner",mot:"pain"},
+{indice:"Je brille dans le ciel la nuit",mot:"lune"},
+{indice:"Je coule dans les rivières",mot:"eau"},
+{indice:"On me lit pour apprendre",mot:"livre"},
+{indice:"Je sonne pour réveiller",mot:"alarme"}
+];
+
+let index=0;
+let score=0;
+
+document.getElementById("indice").innerText=mots[0].indice;
+
+function verifier(){
+    let r=document.getElementById("rep").value.toLowerCase();
+
+    if(r===mots[index].mot){
+        score++;
+        document.getElementById("msg").innerText="✅ Correct !";
+    }else{
+        document.getElementById("msg").innerText="❌ Faux ! Réponse : "+mots[index].mot;
+    }
+
+    index++;
+
+    if(index<mots.length){
+        document.getElementById("indice").innerText=mots[index].indice;
+    }else{
+        document.getElementById("indice").innerText="🎉 Jeu terminé !";
+    }
+
+    document.getElementById("score").innerText=score;
+
+    localStorage.setItem("scoreWordPlay",score);
+
+    document.getElementById("rep").value="";
+}
+</script>
+
+</body>
+</html>

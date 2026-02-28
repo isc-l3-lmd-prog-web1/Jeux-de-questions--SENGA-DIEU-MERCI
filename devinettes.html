@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WordPlay - Devinettes</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Tahoma, sans-serif;
+    background:#eef2f3;
+}
+
+header{
+    background:#11998e;
+    color:white;
+    padding:15px;
+    text-align:center;
+}
+
+nav a{
+    color:white;
+    margin:0 10px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.container{
+    max-width:800px;
+    margin:auto;
+    padding:20px;
+}
+
+.dev{
+    background:white;
+    margin:15px 0;
+    padding:15px;
+    border-radius:8px;
+    box-shadow:0 0 5px rgba(0,0,0,0.2);
+}
+
+button{
+    background:#11998e;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0d7f75;
+}
+
+.rep{
+    display:none;
+    margin-top:10px;
+    font-weight:bold;
+}
+
+@media(max-width:600px){
+    nav a{
+        display:block;
+        margin:6px 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>❓ Devinettes</h1>
+
+<nav>
+<a href="index.html">Accueil</a>
+<a href="jeu.html">Jouer</a>
+<a href="devinettes.html">Devinettes</a>
+<a href="score.html">Scores</a>
+<a href="about.html">À propos</a>
+</nav>
+</header>
+
+<div class="container">
+
+<div class="dev">
+<p>Je parle sans bouche et j'entends sans oreilles. Qui suis-je ?</p>
+<button onclick="show(0)">Voir réponse</button>
+<p class="rep">👉 L'écho</p>
+</div>
+
+<div class="dev">
+<p>Plus je grandis, plus je diminue. Qui suis-je ?</p>
+<button onclick="show(1)">Voir réponse</button>
+<p class="rep">👉 L'âge</p>
+</div>
+
+<div class="dev">
+<p>Qu'est-ce qui monte mais ne descend jamais ?</p>
+<button onclick="show(2)">Voir réponse</button>
+<p class="rep">👉 L'âge</p>
+</div>
+
+<div class="dev">
+<p>Je suis plein de trous mais je garde l’eau. Qui suis-je ?</p>
+<button onclick="show(3)">Voir réponse</button>
+<p class="rep">👉 L'éponge</p>
+</div>
+
+</div>
+
+<script>
+function show(i){
+    let reps=document.querySelectorAll(".rep");
+    reps[i].style.display="block";
+}
+</script>
+
+</body>
+</html>
